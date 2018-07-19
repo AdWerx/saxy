@@ -53,7 +53,7 @@ module Saxy
     def end_element(tag)
       tags.pop
 
-      if tag.equal?(@parent_tag)
+      if tag.eql?(@parent_tag)
         self.inside_parent = nil
       end
 

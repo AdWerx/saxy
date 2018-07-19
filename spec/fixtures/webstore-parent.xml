@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root>
+  <webstore>
+    <name>Amazon</name>
+    <products>
+      <product>
+        <uid>FFCF177</uid>
+        <name>Kindle</name>
+        <description>The world's best-selling e-reader.</description>
+        <price>$109</price>
+        <images count="2">
+          <thumb>http://amazon.com/kindle_thumb.jpg</thumb>
+          <large>http://amazon.com/kindle.jpg</large>
+        </images>
+      </product>
+      <product>
+        <uid>YD26NT</uid>
+        <name>Kindle Touch</name>
+        <description>Simple-to-use touchscreen with built-in WIFI.</description>
+        <price>$79</price>
+        <images count="2">
+          <thumb>http://amazon.com/kindle_touch_thumb.jpg</thumb>
+          <large>http://amazon.com/kindle_touch.jpg</large>
+        </images>
+      </product>
+    </products>
+  </webstore>
+  <retailstore>
+    <products>
+      <product>
+        <uid>FFCF178</uid>
+        <name>Kindle 2</name>
+        <description>The world's next best-selling e-reader.</description>
+        <price>$209</price>
+        <images count="2">
+          <thumb>http://amazon.com/kindle_thumb.jpg</thumb>
+          <large>http://amazon.com/kindle.jpg</large>
+        </images>
+      </product>
+      <product>
+        <uid>FFCF179</uid>
+        <name>Kindle 3</name>
+        <description>The world's next best-selling e-reader.</description>
+        <price>$209</price>
+        <images count="2">
+          <thumb>http://amazon.com/kindle_thumb.jpg</thumb>
+          <large>http://amazon.com/kindle.jpg</large>
+        </images>
+      </product>
+      <product>
+        <uid>FFCF180</uid>
+        <name>Kindle 4</name>
+        <description>The world's next best-selling e-reader.</description>
+        <price>$209</price>
+        <images count="2">
+          <thumb>http://amazon.com/kindle_thumb.jpg</thumb>
+          <large>http://amazon.com/kindle.jpg</large>
+        </images>
+      </product>
+    </products>
+  </retailstore>
+</root>

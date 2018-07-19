@@ -164,4 +164,36 @@ describe Saxy::Parser do
   it "should return Enumerator when calling #each without a block" do
     expect(parser.each).to be_an(Enumerator)
   end
+
+  context 'with parent_element' do
+
+    it 'only emits the target elements inside of the parent' do
+      file = fixture_file('webstore-parent.xml')
+      parser = Saxy::Parser.new(file, 'product', within: 'retailstore')
+
+      uids = parser.each.map { |element| element.fetch(:uid) }
+
+      expect(uids).to eq %w(FFCF178 FFCF179 FFCF180)
+    end
+
+    it 'only emits the target element inside of the parent' do
+      file = fixture_file('webstore-parent.xml')
+      parser = Saxy::Parser.new(file, 'products', within: 'retailstore')
+
+      products = parser.each.to_a
+
+      expect(products.size).to eq 1
+    end
+
+    it 'emits no elements when none are matched ' do
+      file = fixture_file('webstore-parent.xml')
+      parser = Saxy::Parser.new(file, 'product', within: 'doesntexist')
+
+      elements = parser.each.to_a
+
+      expect(elements.size).to eq 0
+    end
+
+  end
+
 end

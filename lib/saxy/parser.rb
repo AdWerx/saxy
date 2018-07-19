@@ -16,8 +16,15 @@ module Saxy
     # Will yield objects inside the callback after they're built
     attr_reader :callback
 
-    def initialize(object, object_tag, encoding=nil)
+    # an optional parent object tag to constrain which object_tags will match.
+    attr_reader :parent_tag
+
+    # whether or not the parser is currently inside the of the parent element
+    attr_accessor :inside_parent
+
+    def initialize(object, object_tag, encoding=nil, within: nil)
       @object, @object_tag = object, object_tag
+      @parent_tag = within
       @tags, @elements = [], []
       @encoding = encoding
     end
@@ -25,7 +32,16 @@ module Saxy
     def start_element(tag, attributes=[])
       @tags << tag
 
-      if tag == @object_tag || elements.any?
+      if tag == parent_tag
+        self.inside_parent = tag
+        return
+      end
+
+      tag_matches = tag == @object_tag
+      no_parent_or_inside_parent = !parent_tag || inside_parent
+      inside_object_tag = elements.any?
+
+      if tag_matches && no_parent_or_inside_parent || inside_object_tag
         elements << Element.new
 
         attributes.each do |(attr, value)|
@@ -36,6 +52,11 @@ module Saxy
 
     def end_element(tag)
       tags.pop
+
+      if tag.equal?(@parent_tag)
+        self.inside_parent = nil
+      end
+
       if element = elements.pop
         object = element.to_h
 
